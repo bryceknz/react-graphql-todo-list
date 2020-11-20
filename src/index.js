@@ -4,10 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import Apollo modules
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+// Create link to connect ApolloClient with GraphQL API
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000',
+});
+
+// Create ApolloClient
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
+
 ReactDOM.render(
-  <React.StrictMode>
+  // Wrap ApolloProvider around App
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
