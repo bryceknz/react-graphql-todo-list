@@ -1,6 +1,12 @@
 {
   "name": "react-todo-list",
   "version": "0.1.0",
+  "author": {
+    "name": "Bryce Kehoe",
+    "email": "bryce@kehoe.co.nz",
+    "url": "https://github.com/bryceknz"
+  },
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
