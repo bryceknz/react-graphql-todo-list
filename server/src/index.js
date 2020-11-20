@@ -10,13 +10,13 @@ const typeDefs = `
 // Resolvers
 const resolvers = {
   Query: {
-    info: () => `This is your GraphQL API`
-  }
+    info: () => `This is your GraphQL API`,
+  },
 }
 
 // GraphQL server
 const server = new GraphQLServer({
   typeDefs,
-  resolvers
+  resolvers,
 })
 server.start(() => console.log(`Server is running on http://localhost:4000`))
