@@ -5,14 +5,20 @@ const data = require('./data')
 // Type definitions
 const typeDefs = `
   type Query {
-    info: String!
+    todos: [TodoItem!]!
+  }
+
+  type TodoItem {
+    id: ID!
+    text: String!
+    completed: Boolean!
   }
 `
 
 // Resolvers
 const resolvers = {
   Query: {
-    info: () => data.info,
+    todos: () => data.todos,
   },
 }
 
