@@ -8,6 +8,10 @@ const typeDefs = `
     todos: [TodoItem!]!
   }
 
+  type Mutation {
+    toggleComplete(id: ID!): TodoItem!
+  }
+
   type TodoItem {
     id: ID!
     text: String!
@@ -19,6 +23,13 @@ const typeDefs = `
 const resolvers = {
   Query: {
     todos: () => data.todos,
+  },
+  Mutation: {
+    toggleComplete: (root, args) => {
+      const itemTotoggle = data.todos.find((item) => item.id === args.id)
+      itemTotoggle.completed = !itemTotoggle.completed
+      return itemTotoggle
+    },
   },
 }
 
