@@ -8,14 +8,14 @@ const typeDefs = `
     todos: [TodoItem!]!
   }
 
-  type Mutation {
-    toggleComplete(id: ID!): TodoItem!
-  }
-
   type TodoItem {
     id: ID!
     text: String!
     completed: Boolean!
+  }
+
+  type Mutation {
+    toggleComplete(id: ID!): TodoItem!
   }
 `
 
