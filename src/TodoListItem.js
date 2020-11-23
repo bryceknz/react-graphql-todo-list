@@ -5,8 +5,8 @@ import './TodoListItem.css'
 
 function TodoListItem({ id, text, completed }) {
   const mutation = gql`
-    mutation {
-      toggleComplete(id: ${id}) {
+    mutation($id: ID!) {
+      toggleComplete(id: $id) {
         completed
       }
     }
@@ -15,7 +15,10 @@ function TodoListItem({ id, text, completed }) {
   return (
     <Mutation mutation={mutation}>
       {(toggleComplete) => (
-        <li className={completed ? 'completed' : ''} onClick={() => toggleComplete(id)}>
+        <li
+          className={completed ? 'completed' : ''}
+          onClick={() => toggleComplete({ variables: { id: id } })}
+        >
           {text}
         </li>
       )}
