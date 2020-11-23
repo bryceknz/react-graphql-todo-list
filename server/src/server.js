@@ -1,6 +1,6 @@
 const { GraphQLServer } = require('graphql-yoga')
 
-const data = require('./data')
+const todos = [...require('./data').todos]
 
 // Type definitions
 const typeDefs = `
@@ -23,21 +23,21 @@ const typeDefs = `
 // Resolvers
 const resolvers = {
   Query: {
-    todos: () => data.todos,
+    todos: () => todos,
   },
   Mutation: {
     toggleComplete: (parent, args) => {
-      const itemTotoggle = data.todos.find((item) => item.id === args.id)
+      const itemTotoggle = todos.find((item) => item.id === args.id)
       itemTotoggle.completed = !itemTotoggle.completed
       return itemTotoggle
     },
     addTodo: (parent, args) => {
       const newTodo = {
-        id: data.todos.length,
+        id: todos.length + '',
         text: args.text,
         completed: false,
       }
-      data.todos.push(newTodo)
+      todos.push(newTodo)
       return newTodo
     },
   },
