@@ -16,6 +16,7 @@ const typeDefs = `
 
   type Mutation {
     toggleComplete(id: ID!): TodoItem!
+    addTodo(text: String!): TodoItem!
   }
 `
 
@@ -25,10 +26,19 @@ const resolvers = {
     todos: () => data.todos,
   },
   Mutation: {
-    toggleComplete: (root, args) => {
+    toggleComplete: (parent, args) => {
       const itemTotoggle = data.todos.find((item) => item.id === args.id)
       itemTotoggle.completed = !itemTotoggle.completed
       return itemTotoggle
+    },
+    addTodo: (parent, args) => {
+      const newTodo = {
+        id: data.todos.length,
+        text: args.text,
+        completed: false,
+      }
+      data.todos.push(newTodo)
+      return newTodo
     },
   },
 }
