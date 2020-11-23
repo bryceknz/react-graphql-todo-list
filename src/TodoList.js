@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import TodoListItem from './TodoListItem'
+import './TodoList.css'
 
 function TodoList({ todoList }) {
   const [newTodo, setNewTodo] = useState('')
@@ -18,7 +19,7 @@ function TodoList({ todoList }) {
   `
 
   return (
-    <>
+    <div class="TodoList">
       <ol>
         {todoList.map((item) => (
           <TodoListItem key={item.id} {...item}></TodoListItem>
@@ -39,7 +40,7 @@ function TodoList({ todoList }) {
           </div>
         )}
       </Mutation>
-    </>
+    </div>
   )
 }
 

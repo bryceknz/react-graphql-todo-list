@@ -17,17 +17,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Query query={query}>
-          {({ loading, error, data }) => (
-            <>
-              {loading && <div>Fetching...</div>}
-              {error && <div>Error 😞</div>}
-              {data && <TodoList todoList={data.todos} />}
-            </>
-          )}
-        </Query>
-      </header>
+      <Query query={query}>
+        {({ loading, error, data }) => (
+          <>
+            {loading && <div>Fetching...</div>}
+            {error && <div>Error 😞</div>}
+            {data && <TodoList todoList={data.todos} />}
+          </>
+        )}
+      </Query>
     </div>
   )
 }
