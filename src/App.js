@@ -6,7 +6,7 @@ import TodoList from './TodoList'
 
 function App() {
   const query = gql`
-    {
+    query {
       todos {
         id
         text
